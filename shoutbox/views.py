@@ -8,11 +8,7 @@ def index(request):
 	latest_shouts_list = shout.objects.all().order_by('-pub_date')[:5]
 	gravatars = []
 	for x in latest_shouts_list:
-		#x.append((hashlib.md5(x.user.email).hexdigest()))
-		x.ahmet = hashlib.md5(x.user.email).hexdigest()
-		gravatars.append(x)
-	#print x.ahmet
-	#print gravatars
+		x.gravatar = hashlib.md5(x.user.email).hexdigest()
 	return render_to_response('base_generic.html', {
 		'latest_shouts': latest_shouts_list,
 		})
