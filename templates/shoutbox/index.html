@@ -1,9 +1,13 @@
-{% if latest_shouts%}
-    <ul>
-    {% for shout in latest_shouts %}
-        <li>{{ shout.user }}: {{ shout.shout }}, {{ shout.pub_date }}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No polls are available.</p>
-{% endif %}
+
+{% block shouts %}
+	{% if latest_shouts%}
+		 <ul>
+		 {% for shout in latest_shouts %}
+		     <li>{{ shout.user }}: {{ shout.shout }}, {{ shout.pub_date }}</li>
+		 {% endfor %}
+		 </ul>
+	{% else %}
+		 <p>No polls are available.</p>
+	{% endif %}
+{% endblock %}
+
