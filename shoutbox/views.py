@@ -5,9 +5,6 @@ from uppsala.shoutbox.models import shout
 import hashlib
 
 def index(request):
-<<<<<<< HEAD:shoutbox/views.py
-
-=======
 	latest_shouts_list = shout.objects.all().order_by('-pub_date')[:5]
 	gravatars = []
 	for x in latest_shouts_list:
@@ -15,7 +12,6 @@ def index(request):
 	return render_to_response('base_generic.html', {
 		'latest_shouts': latest_shouts_list,
 		})
->>>>>>> a87db55bcf0b61b00b5f12327cd6de6400777a98:shoutbox/views.py
 
 def addShout(request):
 	if request.user.is_authenticated():
