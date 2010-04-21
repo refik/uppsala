@@ -2,6 +2,8 @@ from django.shortcuts import render_to_response, get_object_or_404
 from uppsala.meet.models import Meet
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.contrib.admin import widgets
+from uppsala.meet.forms import *
 
 def index(request):
     meeting_suggestions = Meet.objects.all()
@@ -42,16 +44,18 @@ def new(request):
     return render_to_response('meet/new.html')
 
 def create(request):
-    sender_new = request.POST['sender']
-    date_new = request.POST['date']
-    place_new = request.POST['place']
-    n = Meet(date=date_new, place=place_new, sender=sender_new)
-    n.save()
-    n.choice_set.create(choice='gelirim', vote=0)
-    n.choice_set.create(choice='gunde anlastik', vote=0)
-    n.choice_set.create(choice='emin degilim', vote=0)
-    n.choice_set.create(choice='gelemem', vote=0) 
-    n.save()
-    return HttpResponseRedirect(reverse('uppsala.meet.views.result', args=(n.id,)))
-
-
+	form = newMeet(request.POST)
+	if form.is_valid():
+		sender_new = form.cleaned_data['sender']
+		date_new = form.cleaned_data['date']
+		place_new = form.cleaned_data['place']    
+		n = Meet(date=date_new, place=place_new, sender=sender_new)
+		n.save()
+		n.choice_set.create(choice='gelirim', vote=0)
+		n.choice_set.create(choice='gunde anlastik', vote=0)
+		n.choice_set.create(choice='emin degilim', vote=0)
+		n.choice_set.create(choice='gelemem', vote=0) 
+		n.save()
+		return HttpResponseRedirect(reverse('uppsala.meet.views.result', args=(n.id,)))
+	else:
+		return render_to_response('meet/new.html')
