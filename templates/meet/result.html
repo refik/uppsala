@@ -1,0 +1,22 @@
+<h1>{{ meet.date }} {{ meet.place }}</h1>
+
+<ul>
+{% for choice in meet.choice_set.all %}
+    <li>{{ choice.choice }} -- {{ choice.vote }}</li>
+{% endfor %}
+<ul>
+<br>
+<h2>yorumlar</h2>
+<ul>
+{% for comment in meet.comment_set.all %}
+    <li>{{ comment.comment }} -- {{comment.sender }}</li>
+{% endfor %}
+<ul>
+<br>
+<h3>yorum yolla</h3>
+<form action="/meet/{{ meet.id }}/comment/" method="post">
+İsim:      <input type="text" name="sender">
+<br>Yorum: <input type="text" name="comment">
+<br>       <input type="submit" value="Post">
+</form>
+
