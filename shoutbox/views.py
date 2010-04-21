@@ -5,7 +5,7 @@ from uppsala.shoutbox.models import shout
 
 def index(request):
     latest_shouts_list = shout.objects.all().order_by('-pub_date')[:5]
-    return render_to_response('base_generic.html', {'latest_shouts': latest_shouts_list})
+    return render_to_response('shoutbox/base_generic.html', {'latest_shouts': latest_shouts_list})
 
 def addShout(request):
 	if request.user.is_authenticated():
