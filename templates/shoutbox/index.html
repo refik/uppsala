@@ -1,13 +1,15 @@
 
 {% block shouts %}
 	{% if latest_shouts%}
-		 <ul>
-		 {% for shout in latest_shouts %}
-		     <li>{{ shout.user }}: {{ shout.shout }}, {{ shout.pub_date }}</li>
-		 {% endfor %}
-		 </ul>
+		<ul>
+			{% for shout in latest_shouts %}
+				<li>
+					<img src="http://www.gravatar.com/avatar/{{ shout.gravatar }}.jpg?s=40" alt="gravatar for {{ shout.user }}"> {{ shout.user }}: {{ shout.shout }}, {{ shout.pub_date }}
+			     </li>
+			{% endfor %}
+		</ul>
 	{% else %}
-		 <p>No polls are available.</p>
+		<p>No polls are available.</p>
 	{% endif %}
 {% endblock %}
 
