@@ -5,5 +5,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^shouts/', include('uppsala.shoutbox.urls')),
+    (r'^meet/', include('uppsala.meet.urls')),
     (r'^admin/', include(admin.site.urls)),
 )
