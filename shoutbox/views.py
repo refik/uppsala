@@ -9,7 +9,7 @@ def index(request):
 	gravatars = []
 	for x in latest_shouts_list:
 		x.gravatar = hashlib.md5(x.user.email).hexdigest()
-	return render_to_response('base_generic.html', {
+	return render_to_response('shoutbox/base_generic.html', {
 		'latest_shouts': latest_shouts_list,
 		})
 
