@@ -1,22 +1,27 @@
+{% load comments %}
 <h1>{{ meet.date }} {{ meet.place }}</h1>
 
 <ul>
 {% for choice in meet.choice_set.all %}
-    <li>{{ choice.choice }} -- {{ choice.vote }}</li>
+	<li>{{ choice.choice }} -- {{ choice.vote }}</li>
 {% endfor %}
-<ul>
+</ul>
+
 <br>
+
 <h2>yorumlar</h2>
+
+{% get_comment_list for meet as comment_list %}
+
 <ul>
-{% for comment in meet.comment_set.all %}
-    <li>{{ comment.comment }} -- {{comment.sender }}</li>
+{% for comment in comment_list %}
+	<li>{{ comment.comment }} -- {{ comment.user_name }}</li>
 {% endfor %}
-<ul>
-<br>
-<h3>yorum yolla</h3>
-<form action="/meet/{{ meet.id }}/comment/" method="post">
-İsim:      <input type="text" name="sender">
-<br>Yorum: <input type="text" name="comment">
-<br>       <input type="submit" value="Post">
-</form>
+</ul>
+
+<br><br>
+
+<h3>yorum yaz</h3>
+
+{% render_comment_form for meet %}
 

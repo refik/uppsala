@@ -4,7 +4,7 @@
 		<ul>
 			{% for shout in latest_shouts %}
 				<li>
-					<img src="http://www.gravatar.com/avatar/{{ shout.gravatar }}.jpg?s=40" alt="gravatar for {{ shout.user }}"> {{ shout.user }}: {{ shout.shout }}, {{ shout.pub_date }}
+					<img src="http://www.gravatar.com/avatar/{{ shout.gravatar }}.jpg?s=40" alt="gravatar for {{ shout.user }}"> {{ shout.user }}: {{ shout.shout }}, {{ shout.pub_date.date }} / {{ shout.pub_date.hour }}:{{ shout.pub_date.minute}}:{{ shout.pub_date.second }} 
 			     </li>
 			{% endfor %}
 		</ul>
