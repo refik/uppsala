@@ -9,7 +9,7 @@ urlpatterns = patterns('',
 	(r'^shouts/', include('uppsala.shoutbox.urls')),
 	(r'^meet/', include('uppsala.meet.urls')),
 	(r'^admin/', include(admin.site.urls)),
-	(r'^users/', include('uppsala.users.urls')),
+	(r'^', include('uppsala.users.urls')),
 	(r'^fileshare/', include('uppsala.fileshare.urls')),
 	(r'^comments/', include('django.contrib.comments.urls')),
 
