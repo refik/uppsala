@@ -4,10 +4,13 @@ from django.core.urlresolvers import reverse
 from uppsala.fileshare.models import UploadedFile
 from uppsala.fileshare.forms import *
 from uppsala.settings import PROJECT_PATH,MEDIA_URL,ADMIN_MEDIA_PREFIX
+import hashlib
 
 def index(request):
 	shared_files = UploadedFile.objects.all()
 	form = UploadFileForm()
+	for x in shared_files:
+		x.gravatar = hashlib.md5(x.user.email).hexdigest()
 	return render_to_response('fileshare/base_generic.html', {
 		'shared_files': shared_files,
 		'form': form,
