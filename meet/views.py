@@ -20,7 +20,7 @@ def detail(request, meet_id):
 def vote(request, meet_id):
 	p = get_object_or_404(Meet, pk=meet_id)
 	try:
-	        selected_choice = p.choice_set.get(pk=request.POST['choice'])
+		selected_choice = p.choice_set.get(pk=request.POST['choice'])
 	except (KeyError, Choice.DoesNotExist):
 		return render_to_response('meet/detail.html', {
 			'meet': p,
