@@ -15,13 +15,13 @@ def login_user(request):
 	user = authenticate(username=username_login, password=password_login)
 	if user is not None:
 		login(request, user)
-		return render_to_response('users/status.html',{'status':'log_success'} )
+		return render_to_response('users/apps.html',{} )
 	else:
-		return render_to_response('users/status.html',{'status':'log_fail'})
+		return render_to_response('users/index.html',{'status':'log_fail'})
 
 def register(request):
 	user_new = request.POST['username']
 	password_new = request.POST['password']
 	email_new = request.POST['email']
 	user = User.objects.create_user(user_new,email_new,password_new)
-	return render_to_response('users/status.html',{'status':'reg_success' })
+	return render_to_response('users/index.html',{'status':'reg_success' })

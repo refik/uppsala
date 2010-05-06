@@ -1,7 +1,9 @@
-.login
+#login
 {
-margin:auto;
-width:70%;
-background-color:#b0e0e6;
+width:20%;
 }
 
+#register
+{
+width:20%;
+}
