@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 from uppsala.fileshare.models import UploadedFile
 from uppsala.fileshare.forms import *
 from uppsala.settings import PROJECT_PATH,MEDIA_URL,ADMIN_MEDIA_PREFIX
-import hashlib, os
+import hashlib, os, radio
 
 def index(request):
 	shared_files = UploadedFile.objects.all()
@@ -24,6 +24,18 @@ def handle_uploaded_file(f):
 		destination.write(chunk)
 	destination.close()
 	return file_path
+
+
+def addRadioFile(request):
+	kullanici = request.user
+	shared_files = UploadedFile.objects.all()
+	form = UploadFileForm(request.POST, request.FILES)
+	name = request.FILES['file']
+	path = handle_uploaded_file(name)
+	yeniFile = shared_files.create(user = kullanici, file_path = path, file_name = str(name), is_public = True, share_to = kullanici)
+	radio.new(
+	return HttpResponseRedirect('/radio/')
+
 
 def addFile(request):
 	if request.user.is_authenticated():

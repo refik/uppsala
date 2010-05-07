@@ -6,6 +6,7 @@ admin.autodiscover()
 media_path =  PROJECT_PATH+'/media'
 #print media_path
 urlpatterns = patterns('',
+	(r'^radio/', include('uppsala.radio.urls')),
 	(r'^shouts/', include('uppsala.shoutbox.urls')),
 	(r'^meet/', include('uppsala.meet.urls')),
 	(r'^admin/', include(admin.site.urls)),
