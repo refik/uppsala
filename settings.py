@@ -11,12 +11,12 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = '/home/refik/sandbox/uppsala/sql.db'             # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASE_ENGINE = 'sqlite3'		 	# 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_NAME = '/home/refik/sandbox/uppsala/sql.db'				# Or path to database file if using sqlite3.
+DATABASE_USER = ''            		 	# Not used with sqlite3.
+DATABASE_PASSWORD = ''				# Not used with sqlite3.
+DATABASE_HOST = ''      		        # Set to empty string for localhost. Not used with sqlite3.
+DATABASE_PORT = ''      		        # Set to empty string for default. Not used with sqlite3.
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -42,7 +42,7 @@ MEDIA_ROOT = ''
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://127.0.0.1:8000/site_media/'
+MEDIA_URL = 'http://nordkapp/site_media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -81,4 +81,12 @@ INSTALLED_APPS = (
     'uppsala.shoutbox',
     'uppsala.meet',
     'uppsala.fileshare',
+    'uppsala.frontpage',
+    'uppsala.radio',
 )
+
+
+# Radio Settings
+
+RADIO_P = '/home/refik/sandbox/uppsala/media/radio_channel/conf'
+MUSIC_P = '/home/refik/sandbox/uppsala/media/radio_channel'

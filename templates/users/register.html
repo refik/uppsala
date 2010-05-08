@@ -1,0 +1,17 @@
+{% block register %}
+<strong>Register</strong>
+
+<form action="/users/register/" method="post">
+  <table>
+	<tr>
+	  <td>username:</td> <td><input type="text" name="username" /></td>
+	</tr>
+	<tr>
+	  <td>password:</td> <td><input type="password" name="password" /></td>
+	</tr>
+	<tr>
+	  <td>email:</td> <td><input type="text" name="email" /></td>
+  </table>
+  <input type="submit" value="register"/>  
+</form>
+{% endblock %}

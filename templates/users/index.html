@@ -1,47 +1,34 @@
+{% include "users/login.html" %} {# for login block #}
+{% include "users/register.html" %} {#for register block #}
 <html>
 
 <head>
-<link rel="stylesheet" type="text/css" href="/site_media/main.css" />
+  <link rel="stylesheet" type="text/css" href="/site_media/main.css" />
 </head>
 
-<div id="login">
-<b>Login</b>
+<body>
+  <div id="login">
+	{% block login %}
+	{% endblock %}
+  </div>
 
-<form action="/users/login/" method="post">
-<table><tr>
-<td>username:</td> <td><input type="text" name="username"></td>
-</tr><tr>
-<td>password:</td> <td><input type="password" name="password"></td>
-</tr></table>
-<input type="submit" value="login"/> 
-</form>
-</div>
 
-<br/>
+  <div id="register">
+	{% block register %}
+	{% endblock %}
+  </div>
 
-<div id="register">
-<b>Register</b>
-
-<form action="/users/register/" method="post">
-<table><tr>
-<td>username:</td> <td><input type="text" name="username"></td>
-</tr><tr>
-<td>password:</td> <td><input type="password" name="password"></td>
-</tr><tr>
-<td>email:</td> <td><input type="text" name="email"></td>
-</table>
-<input type="submit" value="register"/>  
-</form>
-<div>
-<br/>
-
-{% ifequal status 'log_success' %}
-   <p style="color:green; font-size:20px">Login Successfull</p>
-{% else %}{% ifequal status 'log_fail' %}
-   <p style="color:red; font-size:20px">Login Failed</p>
-{% else %}{% ifequal status 'reg_success' %}
-   <p style="color:green; font-size:20px">Registration Successfull</p>
-{% endifequal %}{% endifequal %}{% endifequal %}
-
+  <div id="status">
+	{% ifequal status 'log_success' %}
+	  <p style="color:green; font-size:20px">Login Successful</p>
+	{% endifequal %}
+	{% ifequal status 'log_fail' %}
+	  <p style="color:red; font-size:20px">Login Failed</p>
+	{% endifequal %}
+	{% ifequal status 'reg_success' %}
+	  <p style="color:green; font-size:20px">Registration Successful</p>
+	{% endifequal %}
+  </div>
+</body>
 </html>
 

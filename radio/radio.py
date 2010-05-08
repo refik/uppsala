@@ -1,9 +1,10 @@
 #!/usr/bin/python
 import os
 import sys
+from uppsala.settings import RADIO_P, MUSIC_P
 
-radio_p = '/home/refik/radio'
-music_p = '/home/refik/music'
+radio_p = RADIO_P
+music_p = MUSIC_P
 
 def stations():
 	stations = os.listdir(music_p)

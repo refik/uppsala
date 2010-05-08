@@ -1,12 +1,10 @@
-<b>Stations</b>
-<br/>
-<ul>
-{% for s in stations %}
-	<li><a href='{{ s }}'>{{ s }}</a></li>
-{% endfor %}
-</ul>
+{% block radio %}
 
-<form action="/radio/new/" method="post">
-<input type="text" name="station"><input type="submit" value="Add Station">
-</form>
+  <p><strong>Stations</strong></p>
+  <ul>
+	{% for s in stations %}
+	  <li><a href="/radio/{{ s }}">{{ s }}</a></li>
+	{% endfor %}
+  </ul>
 
+{% endblock %}

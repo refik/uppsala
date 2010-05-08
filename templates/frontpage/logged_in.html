@@ -1,0 +1,47 @@
+{% extends "frontpage/base_generic.html" %}
+
+{% block logged_in_content %}
+
+<div id="top_menu">
+   logged in as {{ user }} | <a href="/users/logout" title="logout">Logout </a>
+</div>
+<div id="main_content">
+  <div id="meeting">
+	{% block meeting_i %}
+      {% include "meet/index.html" %}
+	{% endblock %}
+  </div>
+  <div id="radio">
+	{% block radio_i %} 
+      {% include "radio/index.html" %}
+	{% endblock %}
+	{% block new_radio_i %}
+	  {% include "radio/new_radio.html" %}
+	{% endblock %}
+  </div>
+  <div id="fileshare">
+	{% block fileshare_i %}
+      {% include "fileshare/index.html" %}
+	{% endblock %}
+	{% block share_a_file_i %}
+	  {% include "fileshare/share_file.html" %}
+	{% endblock %}
+  </div>
+</div>
+<div id="shoutbox">
+ {% block shouts_i %}
+   <div id="shoutbox_header">
+     Latest shouts:
+   </div>
+   {% include "shoutbox/index.html" %}
+ {% endblock %}
+ {% block addshout_i %}
+   {% include "shoutbox/shout.html" %}
+ {% endblock %}
+</div>
+
+<div id="footer">
+Lorem ipsum
+</div>
+
+{% endblock %}

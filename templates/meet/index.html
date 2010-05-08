@@ -1,15 +1,16 @@
-{% if meeting_suggestions %}
+{% block meeting %}
+  {% if meeting_suggestions %}
 
-<ul>
-{% for meet in meeting_suggestions %}
-	<li>{{ meet.date }} tarihi icin {{ meet.sender }} bulusma teklif etti. Yer olarak {{ meet.place }}.   <a href="{{ meet.id }}/">oyla</a>  <a href="{{ meet.id }}/result/">durum</a></li>
-{% endfor %}
-</ul>
+  <ul>
+  {% for meet in meeting_suggestions %}
+    <li>{{ meet.date }} tarihi icin {{ meet.sender }} bulusma teklif etti. Yer olarak {{ meet.place }}. <a href="/meet/{{ meet.id }}/">oyla</a> <a href="/meet/{{ meet.id }}/result/">durum</a></li>
+  {% endfor %}
+  </ul>
 
-{% else %}
-	<p>Daha bir bulusma onerisi yapilmamis</p>
-{% endif %}
+  {% else %}
+    <p>Daha bir bulusma onerisi yapilmamis</p>
+  {% endif %}
 
-<br>
+<a href="/meet/new">yeni bulusma</a>
 
-<a href="new">yeni bulusma</a>
+{% endblock %}

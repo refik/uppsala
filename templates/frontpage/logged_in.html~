@@ -1,0 +1,19 @@
+{% extends "frontpage/base_generic.html" %}
+
+{% block logged_in content %}
+
+user: {{ user }}
+<div id="shoutbox">
+  {% block shoutbox %} {% endblock %}
+</div>
+<div id="meeting">
+  {% block meet %} {% endblock %}
+</div>
+<div id="radio">
+  {% block radio %} {% endblock %}
+</div>
+<div id="fileshare">
+  {% block fileshare %} {% endblock %}
+</div>
+
+{% endblock %}
