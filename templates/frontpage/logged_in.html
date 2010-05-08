@@ -15,10 +15,16 @@
 	{% block radio_i %} 
       {% include "radio/index.html" %}
 	{% endblock %}
+	{% block new_radio_i %}
+	  {% include "radio/new_radio.html" %}
+	{% endblock %}
   </div>
   <div id="fileshare">
 	{% block fileshare_i %}
       {% include "fileshare/index.html" %}
+	{% endblock %}
+	{% block share_a_file_i %}
+	  {% include "fileshare/share_file.html" %}
 	{% endblock %}
   </div>
 </div>
