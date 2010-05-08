@@ -1,6 +1,6 @@
 *.pyc
-settings.py
+settings.py*
 media
-!empty
+!empty*
 !media/css
-!media/radio_channel/conf
+!media/radio_channel/conf/*
