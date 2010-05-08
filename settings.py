@@ -84,3 +84,9 @@ INSTALLED_APPS = (
     'uppsala.frontpage',
     'uppsala.radio',
 )
+
+
+# Radio Settings
+
+RADIO_P = "/home/yigit/Projeler/uppsala/media/radio"
+MUSIC_P = "/home/yigit/Projeler/uppsala/media/music"

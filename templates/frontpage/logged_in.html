@@ -4,17 +4,27 @@
 
 user: {{ user }}
 <div id="shoutbox">
- {% block shoutbox %}
+ {% block shouts_i %}
+   {% include "shoutbox/index.html" %}
+ {% endblock %}
+ {% block addshout_i %}
+   {% include "shoutbox/shout.html" %}
  {% endblock %}
 </div>
 <div id="meeting">
-  {% block meet %} {% endblock %}
+  {% block meeting_i %}
+    {% include "meet/index.html" %}
+  {% endblock %}
 </div>
 <div id="radio">
-  {% block radio %} {% endblock %}
+  {% block radio_i %} 
+    {% include "radio/index.html" %}
+  {% endblock %}
 </div>
 <div id="fileshare">
-  {% block fileshare %} {% endblock %}
+  {% block fileshare_i %}
+    {% include "fileshare/index.html" %}
+  {% endblock %}
 </div>
 
 {% endblock %}
