@@ -81,4 +81,6 @@ INSTALLED_APPS = (
     'uppsala.shoutbox',
     'uppsala.meet',
     'uppsala.fileshare',
+    'uppsala.frontpage',
+    'uppsala.radio',
 )
