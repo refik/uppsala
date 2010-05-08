@@ -26,7 +26,7 @@ def addShout(request):
 				})
 			else:
 				yeniShout = shouts.create(shout = yazilmis, user = kullanici)
-				return HttpResponseRedirect(reverse('uppsala.shoutbox.views.index'))
+				return HttpResponseRedirect('/')
 	else:
 		kullanici = False
 		return render_to_response('shoutbox/shout.html',{
