@@ -1,6 +1,10 @@
 *.pyc
-settings.py*
-media
-!empty*
-!media/css
-!media/radio_channel/conf/*
+*.mp3
+*.MP3
+*.png
+*.jpg
+*.tar
+*.zip
+*.bz2
+*.JPG
+*.pdf

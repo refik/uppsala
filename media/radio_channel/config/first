@@ -1,0 +1,31 @@
+NAME=Proteus Streaming Server
+IP=127.0.0.1
+PORT=8000
+# 2 - Icecast 2.0 (HTTP protocol compatible)
+SERVER=2
+SOURCE=source
+PASSWORD=ahmetahmet
+FORMAT=1
+RECURSIVE=1
+DUMPFILE=
+LOOP=1
+SHUFFLE=1
+BITRATE=48000
+PUBLIC=0
+METAUPDATE=5
+MDFPATH=/mypath/global.mdf
+LOG=2
+LOGPATH=/var/log/icegenerator.log
+DATAPORT=8796
+ 
+#######################################################
+ 
+MOUNT=/first
+ 
+MP3PATH=pth://home/refik/music/first
+ 
+GENRE=Jazz Music
+ 
+DESCRIPTION=Home Radio
+ 
+URL=http://109.74.198.181:8000/first

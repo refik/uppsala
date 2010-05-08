@@ -1,0 +1,3 @@
+refik     5926     1  0 04:53 ?        00:00:08 icegenerator -f /home/refik/radio/first
+root      7568  7323  0 12:19 pts/2    00:00:00 sh -c ps -aef | grep -e icegenerator -e first > /home/refik/radio/input
+root      7570  7568  0 12:19 pts/2    00:00:00 grep -e icegenerator -e first
