@@ -15,7 +15,7 @@ def login_user(request):
 	user = authenticate(username=username_login, password=password_login)
 	if user is not None:
 		login(request, user)
-		return render_to_response('users/apps.html',{} )
+		return render_to_response('/',{} )
 	else:
 		return render_to_response('users/index.html',{'status':'log_fail'})
 
