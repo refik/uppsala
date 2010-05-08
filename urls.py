@@ -14,7 +14,7 @@ urlpatterns = patterns('',
 		       (r'^', include('uppsala.frontpage.urls')),
 		       (r'^fileshare/', include('uppsala.fileshare.urls')),
 		       (r'^comments/', include('django.contrib.comments.urls')),
-		       (r'^logout/', include('uppsala.users.urls')),
+		       (r'^users/logout/', include('uppsala.users.urls')),
 )
 
 # Media Folder (for the development phase. Should be deleted after)
