@@ -5,7 +5,8 @@ from uppsala.fileshare.forms import *
 from uppsala.radio import radio
 
 def index(request):
-	return render_to_response('radio/base.html', {'stations': radio.stations()})
+	stations = radio.stations()
+	return render_to_response('radio/base.html', {'stations': stations})
 
 def detail(request, station_id):
 	form = UploadFileForm()
