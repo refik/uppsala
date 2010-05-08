@@ -2,29 +2,40 @@
 
 {% block logged_in_content %}
 
-user: {{ user }}
+<div id="top_menu">
+   logged in as {{ user }} | <a href="/logout" title="logout">Logout </a>
+</div>
+<div id="main_content">
+  <div id="meeting">
+	{% block meeting_i %}
+      {% include "meet/index.html" %}
+	{% endblock %}
+  </div>
+  <div id="radio">
+	{% block radio_i %} 
+      {% include "radio/index.html" %}
+	{% endblock %}
+  </div>
+  <div id="fileshare">
+	{% block fileshare_i %}
+      {% include "fileshare/index.html" %}
+	{% endblock %}
+  </div>
+</div>
 <div id="shoutbox">
  {% block shouts_i %}
+   <div id="shoutbox_header">
+     Latest shouts:
+   </div>
    {% include "shoutbox/index.html" %}
  {% endblock %}
  {% block addshout_i %}
    {% include "shoutbox/shout.html" %}
  {% endblock %}
 </div>
-<div id="meeting">
-  {% block meeting_i %}
-    {% include "meet/index.html" %}
-  {% endblock %}
-</div>
-<div id="radio">
-  {% block radio_i %} 
-    {% include "radio/index.html" %}
-  {% endblock %}
-</div>
-<div id="fileshare">
-  {% block fileshare_i %}
-    {% include "fileshare/index.html" %}
-  {% endblock %}
+
+<div id="footer">
+Lorem ipsum
 </div>
 
 {% endblock %}

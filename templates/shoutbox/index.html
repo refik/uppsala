@@ -1,10 +1,20 @@
 {% block shouts %}
 	{% if latest_shouts%}
-		<ul>
+		<ul style="list-style-type:none;padding: 0px;margin:0px;">
 			{% for shout in latest_shouts %}
 				<li>
-					<img src="http://www.gravatar.com/avatar/{{ shout.gravatar }}.jpg?s=40" alt="gravatar for {{ shout.user }}"/> {{ shout.user }}: {{ shout.shout }}, {{ shout.pub_date.date }} / {{ shout.pub_date.hour }}:{{ shout.pub_date.minute}}:{{ shout.pub_date.second }} 
-			     </li>
+				  <div id="shout">
+				    <div id="userinfo">
+					  <img src="http://www.gravatar.com/avatar/{{ shout.gravatar }}.jpg?s=40" alt="gravatar for {{ shout.user }}"/>
+					</div>
+					<div id="shout_content">
+					  <strong>{{ shout.user }}</strong> {{ shout.shout }}
+					  <div id="shout_meta">
+						{{ shout.pub_date.hour }}:{{ shout.pub_date.minute}} {{ shout.pub_date.date }}
+					  </div>
+					</div>
+				  </div>
+			    </li>
 			{% endfor %}
 		</ul>
 	{% else %}
