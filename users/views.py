@@ -25,3 +25,7 @@ def register(request):
 	email_new = request.POST['email']
 	user = User.objects.create_user(user_new,email_new,password_new)
 	return render_to_response('users/index.html',{'status':'reg_success' })
+
+def logout_view(request):
+    logout(request)
+    HttpResponseRedirect('/')
