@@ -1,18 +1,47 @@
-<h1>Login to project Uppsala</h1>
+<html>
+
+<head>
+<link rel="stylesheet" type="text/css" href="/site_media/main.css" />
+</head>
+
+<div id="login">
+<b>Login</b>
 
 <form action="/users/login/" method="post">
-<br>Kullanici Adi: <input type="text" name="username">
-<br>Sifre        : <input type="password" name="password">
-<br> <input type="submit" value="login"> 
+<table><tr>
+<td>username:</td> <td><input type="text" name="username"></td>
+</tr><tr>
+<td>password:</td> <td><input type="password" name="password"></td>
+</tr></table>
+<input type="submit" value="login"/> 
 </form>
+</div>
 
-<br>
+<br/>
 
-<h1>New User</h1>
+<div id="register">
+<b>Register</b>
 
 <form action="/users/register/" method="post">
-<br>Kullanici Adi: <input type="text" name="username">
-<br>Sifre        : <input type="password" name="password">
-<br>Email        : <input type="text" name="email">
-<br> <input type="submit" value="register">  
+<table><tr>
+<td>username:</td> <td><input type="text" name="username"></td>
+</tr><tr>
+<td>password:</td> <td><input type="password" name="password"></td>
+</tr><tr>
+<td>email:</td> <td><input type="text" name="email"></td>
+</table>
+<input type="submit" value="register"/>  
 </form>
+<div>
+<br/>
+
+{% ifequal status 'log_success' %}
+   <p style="color:green; font-size:20px">Login Successfull</p>
+{% else %}{% ifequal status 'log_fail' %}
+   <p style="color:red; font-size:20px">Login Failed</p>
+{% else %}{% ifequal status 'reg_success' %}
+   <p style="color:green; font-size:20px">Registration Successfull</p>
+{% endifequal %}{% endifequal %}{% endifequal %}
+
+</html>
+

@@ -1,10 +1,10 @@
 from django.shortcuts import get_object_or_404, render_to_response
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, HttpResponsePermanentRedirect
 from django.core.urlresolvers import reverse
 from uppsala.fileshare.models import UploadedFile
 from uppsala.fileshare.forms import *
 from uppsala.settings import PROJECT_PATH,MEDIA_URL,ADMIN_MEDIA_PREFIX
-import hashlib, os
+import hashlib, os, radio_s
 
 def index(request):
 	shared_files = UploadedFile.objects.all()
@@ -17,15 +17,32 @@ def index(request):
 		'media_url': MEDIA_URL,
 		})
 
-def handle_uploaded_file(f):
-	file_path = PROJECT_PATH + ADMIN_MEDIA_PREFIX + str(f)
+def handle_uploaded_file(f,place):
+	file_path = PROJECT_PATH + ADMIN_MEDIA_PREFIX + '%s/'%(place)  +str(f)
 	destination = open(file_path, 'wb+')
 	for chunk in f.chunks():
 		destination.write(chunk)
 	destination.close()
+	print file_path
 	return file_path
 
+
+def addRadioFile(request,station):	
+	kullanici = request.user
+	shared_files = UploadedFile.objects.all()
+	form = UploadFileForm(request.POST, request.FILES)
+	name = request.FILES['file']
+	place = 'radio'
+	path = handle_uploaded_file(name,place)
+	newFile = shared_files.create(user = kullanici, file_path = path, file_name = str(name), is_public = True, share_to = kullanici)
+	radio_s.add(station,path)
+	radio_s.restart(station)
+#	return HttpResponseRedirect('/fileshare/')	
+#	return HttpResponsePermanentRedirect('/fileshare/')
+	return HttpResponse('Done, go back and refresh (this is a bug by the way)')
+
 def addFile(request):
+	print 'selam'
 	if request.user.is_authenticated():
 		kullanici = request.user
 		shared_files = UploadedFile.objects.all()
@@ -33,8 +50,9 @@ def addFile(request):
 			form = UploadFileForm(request.POST, request.FILES)
 			if form.is_valid():
 				name = request.FILES['file']
-				path = handle_uploaded_file(name)
-				yeniFile = shared_files.create(user = kullanici, file_path = path, file_name = str(name), is_public = True, share_to = kullanici)
+				place = ''
+				path = handle_uploaded_file(name,place)
+				newFile = shared_files.create(user = kullanici, file_path = path, file_name = str(name), is_public = True, share_to = kullanici)
 				return HttpResponseRedirect('/fileshare/')
 			else:
 				print "ahmet"
