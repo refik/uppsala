@@ -2,8 +2,8 @@
 import os
 import sys
 
-radio_p = '/home/lxuser/refik/radio'
-music_p = '/home/lxuser/refik/music'
+radio_p = '/home/refik/radio'
+music_p = '/home/refik/music'
 
 def stations():
 	stations = os.listdir(music_p)

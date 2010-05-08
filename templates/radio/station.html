@@ -7,9 +7,9 @@
 </ul>
 <br/>
 Add a song to this station. You can submit tar or zip archives and mp3 files.
-<form action="/fileshare/addFile/" method="post" enctype="multipart/form-data">
+<form action="/fileshare/addRadioFile/{{ station_id }}/" method="post" enctype="multipart/form-data">
       {{ form }}
 <input type="submit" value="Send" />
 </form>
-
-
+<br/>
+<a href ="http://109.74.198.181:8000/{{ station_id }}">Listen</a>
