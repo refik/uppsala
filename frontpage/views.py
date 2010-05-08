@@ -4,7 +4,7 @@ from uppsala.meet.models import Meet
 from uppsala.fileshare.models import UploadedFile
 import hashlib
 from uppsala.radio import radio
-from uppsala.settings import media_url
+from uppsala.settings import MEDIA_URL
 
 def index(request):
     if request.user.is_authenticated():
@@ -29,7 +29,7 @@ def index(request):
                 'meeting_suggestions' : latest_meetings,
                 'stations' : radio_stations,
                 'shared_files' : latest_files,
-                'media_url' : media_url
+                'media_url' : MEDIA_URL,
                 })
 
     else:
