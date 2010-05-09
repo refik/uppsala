@@ -1,3 +1,7 @@
+{% extends "frontpage/base_generic.html" %}
+
+{% block main_content %}
+
 {% load comments %}
 <h1>{{ meet.date }} {{ meet.place }}</h1>
 
@@ -6,8 +10,6 @@
 	<li>{{ choice.choice }} -- {{ choice.vote }}</li>
 {% endfor %}
 </ul>
-
-<br>
 
 <h2>yorumlar</h2>
 
@@ -19,9 +21,8 @@
 {% endfor %}
 </ul>
 
-<br><br>
-
 <h3>yorum yaz</h3>
 
 {% render_comment_form for meet %}
 
+{% endblock %}

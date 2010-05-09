@@ -1,8 +1,12 @@
+{% extends "frontpage/base_generic.html" %}
+
+{% block main_content %}
 <h1>Yeni Bulusma</h1>
 
 <form action="/meet/create/" method="post">
-<br>Tarih:<input type="text" name="date"> (Yil-Ay-Gun)
-<br>Yer:<input type="text" name="place">
-<br> <input type="submit" value="Create">
+  <p>Tarih:<input type="text" name="date"/> (Yil-Ay-Gun)</p>
+  <p>Yer:<input type="text" name="place"/></p>
+  <p><input type="submit" value="Create"/></p>
 </form>
 
+{% endblock %}

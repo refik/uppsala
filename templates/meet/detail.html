@@ -1,14 +1,21 @@
+{% extends "frontpage/base_generic.html" %}
+
+{% block main_content %}
+
 <h1>{{ meet.date }} {{ meet.place }}</h1>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% if error_message %}
+  <p><strong>{{ error_message }}</strong></p>
+{% endif %}
 
 <form action="/meet/{{ meet.id }}/vote/" method="post">
 
-{% for choice in meet.choice_set.all %}
+  {% for choice in meet.choice_set.all %}
 	<input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-	<label for="choice{{ forloop.counter }}">{{ choice.choice }}</label><br />
-{% endfor %}
-<input type="submit" value="Vote" />
+	<p><label for="choice{{ forloop.counter }}">{{ choice.choice }}</label></p>
+  {% endfor %}
+  <input type="submit" value="Vote" />
 
 </form>
 
+{% endblock %}
