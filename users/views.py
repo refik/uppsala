@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from uppsala.decorators import *
 
-@rendered_with("users/index.html")
+@rendered_with("frontpage/not_logged_in.html")
 def index(request):
 	return locals()
 
@@ -32,7 +32,7 @@ def register(request):
 	return locals()
 
 @login_required
-@rendered_with("frontpage/logged_in.html")
+@rendered_with("frontpage/not_logged_in.html")
 def logout_view(request):
     logout(request)
     return locals()
