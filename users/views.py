@@ -29,7 +29,7 @@ def register(request):
 	email_new = request.POST['email']
 	user = User.objects.create_user(user_new,email_new,password_new)
 	status = "reg_success"
-	return locals()						      })
+	return locals()
 
 @login_required
 @rendered_with("frontpage/logged_in.html")
