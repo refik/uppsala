@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from uppsala.shoutbox.models import shout
 import hashlib
 
+@login_required
 def index(request):
 	latest_shouts_list = shout.objects.all().order_by('-pub_date')[:5]
 	gravatars = []
@@ -13,6 +15,7 @@ def index(request):
 		'latest_shouts': latest_shouts_list,
 		})
 
+@login_required
 def addShout(request):
 	if request.user.is_authenticated():
 		kullanici = request.user

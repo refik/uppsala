@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render_to_response
+from django.contrib.auth.decorators import login_required
 from uppsala.shoutbox.models import shout
 from uppsala.meet.models import Meet
 from uppsala.fileshare.models import UploadedFile
