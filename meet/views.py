@@ -4,19 +4,23 @@ from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from uppsala.meet.forms import *
 
-
+@login_required
 def index(request):
 	meeting_suggestions = Meet.objects.all()
-	return render_to_response('meet/index.html', {'meeting_suggestions': meeting_suggestions})
-
+	return render_to_response('meet/index.html', {'meeting_suggestions': meeting_suggestions,
+						      })
+@login_required
 def result(request, meet_id):
 	p = get_object_or_404(Meet, pk=meet_id)
-	return render_to_response('meet/result.html', {'meet': p})
-
+	return render_to_response('meet/result.html', {'meet': p,
+						       })
+@login_required
 def detail(request, meet_id):
 	p = get_object_or_404(Meet, pk=meet_id)
-	return render_to_response('meet/detail.html', {'meet': p})
+	return render_to_response('meet/detail.html', {'meet': p,
+						       })
 
+@login_required
 def vote(request, meet_id):
 	p = get_object_or_404(Meet, pk=meet_id)
 	try:
@@ -31,9 +35,11 @@ def vote(request, meet_id):
 		selected_choice.save()
 	return HttpResponseRedirect(reverse('uppsala.meet.views.result', args=(p.id,)))
 
+@login_required
 def new(request):
 	return render_to_response('meet/new.html')
 
+@login_required
 def create(request):
 	form = newMeet(request.POST)
 	if form.is_valid() and request.user.is_authenticated():

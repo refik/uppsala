@@ -7,6 +7,7 @@ from uppsala.settings import PROJECT_PATH,MEDIA_URL,ADMIN_MEDIA_PREFIX
 from uppsala.radio import radio
 import hashlib, os
 
+@login_required
 def index(request):
 	shared_files = UploadedFile.objects.all()	
 	form = UploadFileForm()
@@ -18,6 +19,7 @@ def index(request):
 		'media_url': MEDIA_URL,
 		})
 
+@login_required
 def handle_uploaded_file(f,place):
 	file_path = PROJECT_PATH + ADMIN_MEDIA_PREFIX + '%s/'%(place)  +str(f)
 	destination = open(file_path, 'wb+')
@@ -26,7 +28,7 @@ def handle_uploaded_file(f,place):
 	destination.close()
 	return file_path
 
-
+@login_required
 def addRadioFile(request,station):	
 	kullanici = request.user
 	shared_files = UploadedFile.objects.all()
@@ -42,7 +44,7 @@ def addRadioFile(request,station):
 #	return HttpResponsePermanentRedirect('/fileshare/')
 #	return HttpResponse('Done, go back and refresh (this is a bug by the way)')
 
-
+@login_required
 def addFile(request):
 	if request.user.is_authenticated():
 		kullanici = request.user

@@ -8,8 +8,8 @@
   <div id="wrapper">
 	<div id="header"> Uppsala Project</div>
 	<div id="content">
-	  {% if user %}
-	    {% block logged_in_content %}
+	  {% if not_logged_in %}
+	    {% block not_logged_in_content %}
 	    {% endblock %}
 	  {% else %}
 	    {% block not_logged_in_content %}

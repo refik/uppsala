@@ -7,7 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 
 def index(request):
-	return render_to_response('users/index.html',{})
+	return render_to_response('users/index.html',{
+						      })
 
 def login_user(request):
 	username_login = request.POST['username']
@@ -17,15 +18,18 @@ def login_user(request):
 		login(request, user)
 		return HttpResponseRedirect('/')
 	else:
-		return render_to_response('users/index.html',{'status':'log_fail'})
+		return render_to_response('users/index.html',{'status':'log_fail',
+							      })
 
 def register(request):
 	user_new = request.POST['username']
 	password_new = request.POST['password']
 	email_new = request.POST['email']
 	user = User.objects.create_user(user_new,email_new,password_new)
-	return render_to_response('users/index.html',{'status':'reg_success' })
+	return render_to_response('users/index.html',{'status':'reg_success', 
+						      })
 
+@login_required
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
