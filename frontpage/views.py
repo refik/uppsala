@@ -7,6 +7,7 @@ import hashlib
 from uppsala.radio import radio
 from uppsala.settings import MEDIA_URL
 
+@login_required
 def index(request):
     if request.user.is_authenticated():
         logged_in = True
@@ -41,7 +42,6 @@ def index(request):
                 })
   
  
-@login_required
 def fetch_latest_shouts(count):
     latest_shouts = shout.objects.all().order_by('-pub_date')[:int(count)]
     gravatars = []
@@ -49,12 +49,10 @@ def fetch_latest_shouts(count):
         x.gravatar = hashlib.md5(x.user.email).hexdigest()
     return latest_shouts
 
-@login_required
 def fetch_meeting_suggestions(count):
     meeting_suggestions = Meet.objects.all().order_by('-date')[:int(count)]
     return meeting_suggestions
 
-@login_required
 def fetch_shared_files(count):
     shared_files = UploadedFile.objects.all().order_by('-pub_date')[:int(count)]
     for x in shared_files:
