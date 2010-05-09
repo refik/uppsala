@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from uppsala.meet.models import Meet
+from uppsala.meet.models import Meet, Choice
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from uppsala.meet.forms import *
@@ -30,7 +30,7 @@ def detail(request, meet_id):
 def vote(request, meet_id):
 	meet = get_object_or_404(Meet, pk=meet_id)
 	try:
-		selected_choice = p.choice_set.get(pk=request.POST['choice'])
+		selected_choice = meet.choice_set.get(pk=request.POST['choice'])
 	except (KeyError, Choice.DoesNotExist):
 		error_message = "You didn't select a choice"
 		return locals()		
@@ -47,7 +47,7 @@ def new(request):
 @rendered_with("meet/result.html")
 def create(request):
 	form = newMeet(request.POST)
-	if form.is_valid()
+	if form.is_valid():
 		sender_new = request.user
 		date_new = form.cleaned_data['date']
 		place_new = form.cleaned_data['place']    
@@ -60,3 +60,4 @@ def create(request):
 		meet.save()
 		return locals()
 	
+

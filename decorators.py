@@ -1,3 +1,6 @@
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+
 class rendered_with(object):
     def __init__(self, template_name):
         self.template_name = template_name

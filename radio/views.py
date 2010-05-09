@@ -1,9 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render_to_response, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from uppsala.fileshare.forms import *
-from django.template import RequestContext
 from uppsala.radio import radio
 from uppsala.decorators import *
 
