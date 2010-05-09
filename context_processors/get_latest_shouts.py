@@ -1,3 +1,4 @@
+from django.conf import settings
 from uppsala.shoutbox.models import shout
 import hashlib
 
