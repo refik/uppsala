@@ -8,6 +8,7 @@ music_p = MUSIC_P
 
 def stations():
 	stations = os.listdir(music_p)
+	stations.remove('config')
 	return stations
 
 def add(station,music):
