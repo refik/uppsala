@@ -5,22 +5,25 @@ from uppsala.meet.models import Meet
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from uppsala.meet.forms import *
+from uppsala.decorators import *
 
 @login_required
+@rendered_with("meet/index.html")
 def index(request):
 	meeting_suggestions = Meet.objects.all()
-	return render_to_response('meet/index.html', {'meeting_suggestions': meeting_suggestions,
-						      }, context_instance=RequestContext(request))
+	return locals()
+
 @login_required
+@rendered_with("meet/result.html")
 def result(request, meet_id):
 	p = get_object_or_404(Meet, pk=meet_id)
-	return render_to_response('meet/result.html', {'meet': p,
-						       }, context_instance=RequestContext(request))
+	return locals()
+
 @login_required
+@rendered_with("meet/detail.html")
 def detail(request, meet_id):
 	p = get_object_or_404(Meet, pk=meet_id)
-	return render_to_response('meet/detail.html', {'meet': p,
-						       }, context_instance=RequestContext(request))
+	return locals()
 
 @login_required
 def vote(request, meet_id):
