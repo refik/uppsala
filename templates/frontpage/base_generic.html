@@ -13,6 +13,8 @@
 	    {% endblock %}
 	  {% else %}
 	    {% block logged_in_content %}
+	      {% block main_content %}
+	      {% endblock %}
 	    {% endblock %}
 	  {% endif %}
 	</div>
