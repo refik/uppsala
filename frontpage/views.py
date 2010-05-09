@@ -7,7 +7,7 @@ import hashlib
 from uppsala.radio import radio
 from uppsala.settings import MEDIA_URL
 
-@login_required
+
 def index(request):
     if request.user.is_authenticated():
         logged_in = True
