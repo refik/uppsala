@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
-from django.core.urlresolvers import reverse
+from django.template import RequestContext
 from uppsala.shoutbox.models import shout
 import hashlib
 
@@ -12,8 +12,8 @@ def index(request):
 	for x in latest_shouts_list:
 		x.gravatar = hashlib.md5(x.user.email).hexdigest()
 	return render_to_response('shoutbox/base_generic.html', {
-		'latest_shouts': latest_shouts_list,
-		})
+			'latest_shouts': latest_shouts_list,
+			},context_instance=RequestContext(request))
 
 @login_required
 def addShout(request):
@@ -25,8 +25,8 @@ def addShout(request):
 				yazilmis = request.POST['shout']
 			except (KeyError):
 				return render_to_response('shoutbox/shout.html',{
-					'error_message': "Please enter a shout",
-				})
+						'error_message': "Please enter a shout",
+						},context_instance=RequestContext(request))
 			else:
 				yeniShout = shouts.create(shout = yazilmis, user = kullanici)
 				return HttpResponseRedirect('/')
@@ -34,4 +34,4 @@ def addShout(request):
 		kullanici = False
 		return render_to_response('shoutbox/shout.html',{
 				'error_message': "You need to login.",
-			})
+				},context_instance=RequestContext(request))

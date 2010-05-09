@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse, HttpResponsePermanentRedirect
-from django.core.urlresolvers import reverse
+from django.template import RequestContext
 from uppsala.fileshare.models import UploadedFile
 from uppsala.fileshare.forms import *
 from uppsala.settings import PROJECT_PATH,MEDIA_URL,ADMIN_MEDIA_PREFIX
@@ -18,7 +18,7 @@ def index(request):
 		'shared_files': shared_files,
 		'form': form,
 		'media_url': MEDIA_URL,
-		})
+		}, context_instance=RequestContext(request))
 
 @login_required
 def handle_uploaded_file(f,place):
@@ -61,12 +61,12 @@ def addFile(request):
 			else:
 				form = UploadFileForm()
 		return render_to_response('fileshare/base_generic.html', {
-			'form': form,
-			})
+				'form': form,
+				}, context_instance=RequestContext(request))
 	else:
 		kullanici = False
 		return render_to_response('fileshare/base_generic.html',{
 				'error_message': "You need to login.",
-			})
+				}, context_instance=RequestContext(request))
 
 		

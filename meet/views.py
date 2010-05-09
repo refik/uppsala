@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 from uppsala.meet.models import Meet
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
@@ -9,17 +10,17 @@ from uppsala.meet.forms import *
 def index(request):
 	meeting_suggestions = Meet.objects.all()
 	return render_to_response('meet/index.html', {'meeting_suggestions': meeting_suggestions,
-						      })
+						      }, context_instance=RequestContext(request))
 @login_required
 def result(request, meet_id):
 	p = get_object_or_404(Meet, pk=meet_id)
 	return render_to_response('meet/result.html', {'meet': p,
-						       })
+						       }, context_instance=RequestContext(request))
 @login_required
 def detail(request, meet_id):
 	p = get_object_or_404(Meet, pk=meet_id)
 	return render_to_response('meet/detail.html', {'meet': p,
-						       })
+						       }, context_instance=RequestContext(request))
 
 @login_required
 def vote(request, meet_id):
@@ -30,7 +31,7 @@ def vote(request, meet_id):
 		return render_to_response('meet/detail.html', {
 			'meet': p,
 			'error_message': "You didn't select a choice.",
-		})
+		}, context_instance=RequestContext(request))
 	else:
 		selected_choice.vote += 1
 		selected_choice.save()
@@ -38,7 +39,8 @@ def vote(request, meet_id):
 
 @login_required
 def new(request):
-	return render_to_response('meet/new.html')
+	return render_to_response('meet/new.html',{
+			}, context_instance=RequestContext(request))
 
 @login_required
 def create(request):
@@ -56,4 +58,5 @@ def create(request):
 		n.save()
 		return HttpResponseRedirect(reverse('uppsala.meet.views.result', args=(n.id,)))
 	else:
-		return render_to_response('meet/new.html')
+		return render_to_response('meet/new.html',{
+				}, context_instance=RequestContext(request))

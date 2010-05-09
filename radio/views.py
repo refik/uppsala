@@ -3,13 +3,14 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from uppsala.fileshare.forms import *
+from django.template import RequestContext
 from uppsala.radio import radio
 
 @login_required
 def index(request):
 	stations = radio.stations()
 	return render_to_response('radio/base.html', {'stations': stations,
-						      })
+						      }, context_instance=RequestContext(request))
 @login_required
 def detail(request, station_id):
 	form = UploadFileForm()
@@ -17,7 +18,7 @@ def detail(request, station_id):
 		'songs': radio.songs(station_id), 
 		'station_id': station_id,
 		'form': form,
-		})
+		}, context_instance=RequestContext(request))
 
 @login_required
 def new(request):
