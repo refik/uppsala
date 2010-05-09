@@ -5,20 +5,21 @@ from django.core.urlresolvers import reverse
 from uppsala.fileshare.forms import *
 from django.template import RequestContext
 from uppsala.radio import radio
+from uppsala.decorators import *
+
 
 @login_required
+@rendered_with("radio/base.html")
 def index(request):
 	stations = radio.stations()
-	return render_to_response('radio/base.html', {'stations': stations,
-						      }, context_instance=RequestContext(request))
+	return locals()
+
 @login_required
+@rendered_with("radio/station.html")
 def detail(request, station_id):
 	form = UploadFileForm()
-	return render_to_response('radio/station.html', {
-		'songs': radio.songs(station_id), 
-		'station_id': station_id,
-		'form': form,
-		}, context_instance=RequestContext(request))
+	songs = radio.songs(station_id)
+	return locals()
 
 @login_required
 def new(request):
