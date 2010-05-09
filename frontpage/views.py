@@ -35,7 +35,7 @@ def index(request):
     else:
         logged_in = False
         return render_to_response('frontpage/not_logged_in.html', {
-                'not_logged_in': True
+                'not_logged_in': True,
                 'logged_in' : logged_in,
                 })
   
