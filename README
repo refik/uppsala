@@ -1,1 +1,3 @@
 Very simple and unixy platform for using simplified social application clones with close friends.
+
+run 'python install.py' before initializing the server to create new settings.py
