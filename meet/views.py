@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from uppsala.meet.models import Meet
 from django.http import Http404, HttpResponse, HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.template import RequestContext
 from uppsala.meet.forms import *
 
 @login_required
