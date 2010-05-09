@@ -6,6 +6,7 @@
    logged in as {{ user }} | <a href="/users/logout" title="logout">Logout </a>
 </div>
 <div id="main_content">
+  {% block main_content %}
   <div id="meeting">
 	{% block meeting_i %}
       {% include "meet/index.html" %}
@@ -27,6 +28,7 @@
 	  {% include "fileshare/share_file.html" %}
 	{% endblock %}
   </div>
+  {% endblock %}
 </div>
 <div id="shoutbox">
  {% block shouts_i %}
