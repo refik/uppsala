@@ -8,3 +8,5 @@
 *.bz2
 *.JPG
 *.pdf
+settings.py
+*.db
