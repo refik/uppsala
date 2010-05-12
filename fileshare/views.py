@@ -21,7 +21,8 @@ def handle_uploaded_file(f,place):
 	return file_path
 
 @login_required
-def addRadioFile(request,station):	
+def addRadioFile(request):
+	station = request.POST['station']
 	kullanici = request.user
 	shared_files = UploadedFile.objects.all()
 	form = UploadFileForm(request.POST, request.FILES)

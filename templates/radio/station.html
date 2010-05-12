@@ -11,16 +11,18 @@
 
 <p>Add a song to this station. You can submit tar or zip archives and mp3 files.</p>
 <p>
-<form action="/fileshare/addRadioFile/{{ station_id }}/" method="post" enctype="multipart/form-data">
+<form action="/fileshare/addRadioFile/" method="post" enctype="multipart/form-data">
 	{{ form }}
+	<input type="hidden" name="station" value="{{ station_id }}"/>
 	<input type="submit" value="Send" />
 </form>
 </p>
 
 <p>
-<form action="/radio/restart/{{ station_id }}/" method="post" enctype="multipart/form-data">
-<input type="submit" value="Restart Station" />
-</form>
+  <form action="/radio/restart" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="station" value="{{ station_id }}" />
+	<input type="submit" value="Restart Station" />
+  </form>
 </p>
 
 <a href ="http://109.74.198.181:8000/{{ station_id }}" title="{{ station_id }}">Listen</a>
