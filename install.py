@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import os
 
-path = os.path.abspath('media/radio_channel/conf')
+path = os.path.abspath('media/radio_channel/config')
 os.system('sed \'s|radiopath|%s|\' settings_base > new.py'%(path))
 path = os.path.abspath('media/radio_channel')
 os.system('sed \'s|musicpath|%s|\' new.py > new1.py'%(path))

@@ -7,11 +7,7 @@ from django.template import RequestContext
 from uppsala.meet.forms import *
 from uppsala.decorators import *
 
-@login_required
-@rendered_with("meet/index.html")
-def index(request):
-	meeting_suggestions = Meet.objects.all()
-	return locals()
+
 
 @login_required
 @rendered_with("meet/result.html")

@@ -1,7 +1,7 @@
-{% extends "frontpage/logged_in.html" %}
+{% extends "base.html" %}
 
 {% block main_content %}
-<h1>Yeni Bulusma</h1>
+<strong>Yeni Bulusma</strong>
 
 <form action="/meet/create/" method="post">
   <p>Tarih:<input type="text" name="date"/> (Yil-Ay-Gun)</p>

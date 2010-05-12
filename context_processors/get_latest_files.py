@@ -7,7 +7,7 @@ import hashlib
 
 def get_latest_files(request):
    "A context processor that provides the latest shared files" 
-   shared_files = UploadedFile.objects.all()	
+   shared_files = UploadedFile.objects.all()[:4]	
    form = UploadFileForm()
    media_url = MEDIA_URL
    for x in shared_files:

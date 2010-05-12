@@ -1,10 +1,12 @@
-{% block radio %}
-
-  <p><strong>Stations</strong></p>
-  <ul>
+<p><strong>Stations</strong></p>
+	
+<ul>
 	{% for s in stations %}
-	  <li><a href="/radio/{{ s }}">{{ s }}</a></li>
+		<li><a href="/radio/{{ s }}">{{ s }}</a></li>
 	{% endfor %}
-  </ul>
+</ul>
 
-{% endblock %}
+<form action="/radio/new/" method="post">
+	<input type="text" name="station"><input type="submit" value="Add Station" />
+</form>
+

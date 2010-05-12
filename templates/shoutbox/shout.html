@@ -1,7 +1,0 @@
-{% block addShout %}
-	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-	<form action="/shouts/addShout/" method="post" id="addshout">
-		<input type="text" name="shout" class="textbox" />
-		<input type="submit" value="Shout" class="submitbox" />
-	</form>
-{% endblock %}
