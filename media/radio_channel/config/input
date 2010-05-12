@@ -1,3 +1,2 @@
-refik     3771     1  0 23:21 ?        00:00:00 icegenerator -f /home/refik/sandbox/uppsala/media/radio_channel/config/first
-refik     3788  3739  0 23:21 pts/1    00:00:00 sh -c ps -aef | grep -e icegenerator -e first > /home/refik/sandbox/uppsala/media/radio_channel/config/input
-refik     3790  3788  0 23:21 pts/1    00:00:00 grep -e icegenerator -e first
+yigit    21495 21460  0 00:04 pts/3    00:00:00 sh -c ps -aef | grep -e icegenerator -e first > /home/yigit/Projeler/uppsala-master/uppsala/media/radio_channel/config/input
+yigit    21497 21495  0 00:04 pts/3    00:00:00 grep -e icegenerator -e first

@@ -24,5 +24,5 @@ def restart(request):
 	#raise Exception(station_name)
         radio.restart(station_name)
 
-	HttpResponseRedirect('/radio/'+str(station_name))
+	return HttpResponseRedirect('/radio/'+str(station_name))
 
