@@ -1,2 +1,2 @@
-yigit    21495 21460  0 00:04 pts/3    00:00:00 sh -c ps -aef | grep -e icegenerator -e first > /home/yigit/Projeler/uppsala-master/uppsala/media/radio_channel/config/input
-yigit    21497 21495  0 00:04 pts/3    00:00:00 grep -e icegenerator -e first
+yigit    21823 21777  0 00:05 pts/3    00:00:00 sh -c ps -aef | grep -e icegenerator -e first > /home/yigit/Projeler/uppsala-master/uppsala/media/radio_channel/config/input
+yigit    21825 21823  0 00:05 pts/3    00:00:00 grep -e icegenerator -e first
