@@ -10,3 +10,4 @@
 *.pdf
 settings.py
 *.db
+sql.db
