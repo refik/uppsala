@@ -21,7 +21,7 @@ def new(request):
 #@login_required
 def restart(request):
 	station_name = request.POST['station']
-	raise Exception(station_name)
+	#raise Exception(station_name)
         radio.restart(station_name)
 
 	HttpResponseRedirect('/radio/'+str(station_name))
