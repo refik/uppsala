@@ -20,7 +20,7 @@ def handle_uploaded_file(f,place):
 	destination.close()
 	return file_path
 
-@login_required
+#@login_required
 def addRadioFile(request):
 	station = request.POST['station']
 	kullanici = request.user
@@ -34,6 +34,8 @@ def addRadioFile(request):
 		radio.add(station,path)
 		radio.restart(station)
 		return HttpResponseRedirect('/radio/'+str(station))
+	
+	
 
 
 def addFile(request):
@@ -49,9 +51,9 @@ def addFile(request):
 			return HttpResponseRedirect('/')
 		else:
 			form = UploadFileForm()
-	return render_to_response('base.html', {
-			'form': form,
-			}, context_instance=RequestContext(request))
+			return render_to_response('base.html', {
+					'form': form,
+					}, context_instance=RequestContext(request))
 
 def checkUserFolder(path_name):
 	if os.path.isdir(path_name) == False:
