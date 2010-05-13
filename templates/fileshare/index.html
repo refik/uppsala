@@ -1,9 +1,30 @@
 {% if shared_files %}
-	<ul>
+	<ul style="list-style:none;">
 		{% for file in shared_files %}
-		<li>
-		<img src="http://www.gravatar.com/avatar/{{ file.gravatar }}.jpg?s=40" alt="gravatar for {{ shout.user }}"/>{{ file.user }} shared <a href="{{ media_url }}{{ file.user }}/{{ file.file_name }}" name="{{ file.file_name }}">{{ file.file_name }}</a> at {{ file.pub_date.hour }}:{{ file.pub_date.minute }} {{ file.pub_date.day }}/{{ file.pub_date.month }}/{{ file.pub_date.year }}
-		</li>
+		  <li style="list-style:none;">
+			<p>
+			  <img src="http://www.gravatar.com/avatar/{{ file.gravatar }}.jpg?s=40" alt="gravatar for {{ shout.user }}"/>{{ file.user }} shared <a href="{{ media_url }}{{ file.user }}/{{ file.file_name }}" name="{{ file.file_name }}">{{ file.file_name }}</a> at {{ file.pub_date.hour }}:{{ file.pub_date.minute }} {{ file.pub_date.day }}/{{ file.pub_date.month }}/{{ file.pub_date.year }} | <span onclick="javascript:document.getElementById('file_{{ forloop.counter0 }}').style.display = 'block';" style="text-decoration:underline;">Show</span>
+			</p>
+			{% ifequal file.file_type "Audio" %}
+			  <div id="file_{{ forloop.counter0 }}" class="nodisplay">
+				<audio src="{{ media_url }}{{ file.user }}/{{ file.file_name }}" controls="controls">
+				  Your browser does not support the audio element.
+				</audio>
+			  </div>
+			{% endifequal %}
+			{% ifequal file.file_type "Image" %}
+			  <div id="file_{{ forloop.counter0 }}" class="nodisplay">
+				<img src="{{ media_url }}{{ file.user }}/{{ file.file_name }}" alt="{{ file.file_name }}" />
+			  </div>
+			{% endifequal %}
+			{% ifequal file.file_type "Video" %}
+			  <div id="file_{{ forloop.counter0 }}" class="nodisplay">
+				<video src="{{ media_url }}{{ file.user }}/{{ file.file_name }}" controls="controls">
+				  Your browser does not support the video element.
+				</video>
+			  </div>
+			{% endifequal %}  
+		  </li>
 		{% endfor %}
 	</ul>
 {% else %}
@@ -11,7 +32,7 @@
 {% endif %}
 
 <h1>Share File</h1>
-<form action="/fileshare/addFile" method="post" enctype="multipart/form-data">
+<form action="/fileshare/addFile/" method="post" enctype="multipart/form-data">
   <table>
 	{{ form }}
 	<tr><td><input type="submit" value="Share" /></td></tr>
