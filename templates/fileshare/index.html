@@ -1,9 +1,16 @@
 {% if shared_files %}
-	<ul>
+	<ul style="list-style:none;">
 		{% for file in shared_files %}
-		<li>
-		<img src="http://www.gravatar.com/avatar/{{ file.gravatar }}.jpg?s=40" alt="gravatar for {{ shout.user }}"/>{{ file.user }} shared <a href="{{ media_url }}{{ file.user }}/{{ file.file_name }}" name="{{ file.file_name }}">{{ file.file_name }}</a> at {{ file.pub_date.hour }}:{{ file.pub_date.minute }} {{ file.pub_date.day }}/{{ file.pub_date.month }}/{{ file.pub_date.year }}
-		</li>
+		  <li style="list-style:none;">
+			<p>
+			  <img src="http://www.gravatar.com/avatar/{{ file.gravatar }}.jpg?s=40" alt="gravatar for {{ shout.user }}"/>{{ file.user }} shared <a href="{{ media_url }}{{ file.user }}/{{ file.file_name }}" name="{{ file.file_name }}">{{ file.file_name }}</a> at {{ file.pub_date.hour }}:{{ file.pub_date.minute }} {{ file.pub_date.day }}/{{ file.pub_date.month }}/{{ file.pub_date.year }}
+			</p>
+			{% ifequal file.file_type "Audio" %}  
+			  <audio src="{{ media_url }}{{ file.user }}/{{ file.file_name }}" controls="controls">
+				Your browser does not support the audio element.
+			  </audio>
+			{% endifequal %}
+		  </li>
 		{% endfor %}
 	</ul>
 {% else %}
