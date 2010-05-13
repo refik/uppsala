@@ -54,7 +54,7 @@ body{
 	min-height: 20px;
 }
 
-#shout{
+.shout{
 	clear:both;
 	background: #fff;
 	width: 250px;
@@ -63,7 +63,7 @@ body{
 	list-style-type: none;
 }
 
-#shoutbox #userinfo{
+#shoutbox .userinfo{
 	width: 40px;
 	min-height:40px;
 	padding: 0;
@@ -73,7 +73,7 @@ body{
 	border-bottom: 1px solid #bbb;
 }
 
-#shoutbox #shout_content{
+#shoutbox .shout_content{
 	width:200px;
 	float: left;
 	padding-left: 5px;
@@ -82,7 +82,7 @@ body{
 	border-bottom: 1px solid #bbb;
 }
 
-#shoutbox #shout_meta{
+#shoutbox .shout_meta{
 	height:10px;
 	font-size:0.7em;
 	color: #4d4b3f;
