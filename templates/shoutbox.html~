@@ -1,0 +1,31 @@
+{% block shouts %}
+	{% if latest_shouts%}
+		<ul style="list-style-type:none;padding: 0px;margin:0px;">
+			{% for shout in latest_shouts %}
+				<li>
+				  <div id="shout">
+				    <div id="userinfo">
+					  <img src="http://www.gravatar.com/avatar/{{ shout.gravatar }}.jpg?s=40" alt="gravatar for {{ shout.user }}"/>
+					</div>
+					<div id="shout_content">
+					  <strong>{{ shout.user }}</strong> {{ shout.shout }}
+					  <div id="shout_meta">
+						{{ shout.pub_date.hour }}:{{ shout.pub_date.minute}} {{ shout.pub_date.date }}
+					  </div>
+					</div>
+				  </div>
+			    </li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p>No shouts are available.</p>
+	{% endif %}
+{% endblock %}
+
+{% block addShout %}
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	<form action="/shouts/addShout/" method="post" id="addshout">
+		<input type="text" name="shout" class="textbox" />
+		<input type="submit" value="Shout" class="submitbox" />
+	</form>
+{% endblock %}

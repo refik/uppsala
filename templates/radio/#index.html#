@@ -1,0 +1,10 @@
+{% block radio %}
+
+  <p><strong>Stations</strong></p>
+  <ul>
+	{% for s in stations %}
+	  <li><a href="/radio/{{ s }}">{{ s }}</a></li>
+	{% endfor %}
+  </ul>
+
+{% endblock %}
