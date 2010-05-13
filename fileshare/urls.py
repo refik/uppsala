@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
 
-urlpatterns = patterns('',
-	(r'^addFile/$', 'uppsala.fileshare.views.addFile'),
-	(r'^addRadioFile$', 'uppsala.fileshare.views.addRadioFile'),
+urlpatterns = patterns('uppsala.fileshare.views',
+	(r'^addFile/$', 'addFile'),
+	(r'^addRadioFile$', 'addRadioFile'),
 )
