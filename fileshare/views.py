@@ -20,23 +20,6 @@ def handle_uploaded_file(f,place):
 	destination.close()
 	return file_path
 
-#@login_required
-def addRadioFile(request):
-	station = request.POST['station']
-	kullanici = request.user
-	shared_files = UploadedFile.objects.all()
-	form = UploadFileForm(request.POST, request.FILES)
-	if form.is_valid():
-		name = request.FILES['file']
-		place = kullanici.username
-		path = handle_uploaded_file(name,place)
-		newFile = shared_files.create(user = kullanici, file_path = path, file_type = ftype, file_name = str(name), is_public = True, share_to = kullanici)
-		radio.add(station,path)
-		radio.restart(station)
-		return HttpResponseRedirect('/radio/'+str(station))
-	
-	
-
 
 def addFile(request):
 	kullanici = request.user
@@ -55,6 +38,11 @@ def addFile(request):
 			if fname[-3:] == "avi" or fname[-3:] == "mkv" or fname[-3:] == "ogv":
 				ftype = "Audio"
 			newFile = shared_files.create(user = kullanici, file_path = path, file_name = fname, file_type = ftype, is_public = True, share_to = kullanici)
+			if request.POST['type'] == 'radio':
+				station = request.POST['station']
+				radio.add(station,path)
+				radio.restart(station)
+				return HttpResponseRedirect('/radio/'+str(station))
 			return HttpResponseRedirect('/')
 		else:
 			form = UploadFileForm()
