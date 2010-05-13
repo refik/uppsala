@@ -35,6 +35,7 @@
 <form action="/fileshare/addFile/" method="post" enctype="multipart/form-data">
   <table>
 	{{ form }}
+	<input type="hidden" name="type" value="regular"/>
 	<tr><td><input type="submit" value="Share" /></td></tr>
   </table>
 </form>
