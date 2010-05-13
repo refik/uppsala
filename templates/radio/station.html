@@ -1,4 +1,4 @@
-{% extends "frontpage/logged_in.html" %}
+{% extends "base.html" %}
 
 {% block main_content %}
 <p><strong>Songs in {{ station_id }}</strong></p>
@@ -11,9 +11,17 @@
 
 <p>Add a song to this station. You can submit tar or zip archives and mp3 files.</p>
 <p>
-  <form action="/fileshare/addRadioFile/{{ station_id }}/" method="post" enctype="multipart/form-data">
-      {{ form }}
-	  <input type="submit" value="Send" />
+<form action="/fileshare/addRadioFile" method="post" enctype="multipart/form-data">
+	{{ form }}
+	<input type="hidden" name="station" value="{{ station_id }}"/>
+	<input type="submit" value="Send" />
+</form>
+</p>
+
+<p>
+  <form action="/radio/restart" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="station" value="{{ station_id }}" />
+	<input type="submit" value="Restart Station" />
   </form>
 </p>
 

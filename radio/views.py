@@ -6,12 +6,6 @@ from uppsala.decorators import *
 
 
 @login_required
-@rendered_with("radio/base.html")
-def index(request):
-	stations = radio.stations()
-	return locals()
-
-@login_required
 @rendered_with("radio/station.html")
 def detail(request, station_id):
 	form = UploadFileForm()
@@ -23,4 +17,12 @@ def new(request):
    new_s = request.POST['station']
    radio.new(new_s)
    return HttpResponseRedirect('/')
+
+#@login_required
+def restart(request):
+	station_name = request.POST['station']
+	#raise Exception(station_name)
+        radio.restart(station_name)
+
+	return HttpResponseRedirect('/radio/'+str(station_name))
 

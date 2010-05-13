@@ -1,32 +1,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" /> 
-  <title>{% block title %}Uppsala Project{% endblock %}</title>
-  {% block stylesheets %}
-  <link rel="stylesheet" href="/site_media/css/main.css" type="text/css" media="screen" /> 
-  {% endblock %}
-  {% block scripts %}
-  {% endblock %}
-  {% block other_links %}
-  {%end block%}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Uppsala Project</title>
+	<link rel="stylesheet" href="/site_media/css/main.css" type="text/css" media="screen" /> 
 </head>
 <body>
-  <div id="wrapper">
-	<div id="header">{% block header_title %}Uppsala Project{% endblock %}</div>
-	{% block content %}
-	<div id="content">
-	  {% if not_logged_in %}
-	    {% block not_logged_in_content %}
-	    {% endblock %}
-	  {% else %}
-	    {% block logged_in_content %}
-	      {% block main_content %}
-	      {% endblock %}
-	    {% endblock %}
-	  {% endif %}
+	<div id="wrapper">
+	<div id="header"> Uppsala Project</div>
+	
+	<div id="top_menu">
+		logged in as {{ user }} | <a href="/logout" title="logout">Logout </a>
 	</div>
-	{% endblock %}
-  </div>
+
+	<div id="main_content">
+		{% block main_content %}
+		{% include "meet/index.html" %}
+		{% include "radio/index.html" %}
+		{% include "fileshare/index.html" %}
+		{% endblock %}	
+	</div>
+	<div id="shoutbox">
+		{% block side_content %}
+		{% include "shoutbox/index.html" %}
+		{% endblock %} 
+	</div>
+   <div id="footer">
+      eyjafjallajökull
+   </div>
+	</div>
 </body>
 </html>

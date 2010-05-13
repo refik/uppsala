@@ -5,7 +5,7 @@ import hashlib
 
 
 @login_required
-@rendered_with("frontpage/logged_in.html")
+@rendered_with("base.html")
 def addShout(request):
 	kullanici = request.user
 	shouts = shout.objects.all()

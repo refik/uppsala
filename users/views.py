@@ -6,10 +6,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from uppsala.decorators import *
 
-
+@login_required
+@rendered_with("base.html")
 def index(request):
-	return HttpResponseRedirect('/')
-	
+	return locals()
+
+
+def login_page(request):
+	return render_to_response('users/login.html')
+
 
 def login_user(request):
 	username_login = request.POST['username']
