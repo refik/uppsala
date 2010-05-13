@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import os
 import sys
+import shutil
 from uppsala.settings import RADIO_P, MUSIC_P
 
 radio_p = RADIO_P
@@ -17,7 +18,7 @@ def add(station,music):
 	elif music[-3:] == 'zip':
 		os.system('unzip -jo %s -d %s/%s' %(music, music_p, station))
 	else:
-		os.system('cp %s %s/%s' %(music, music_p, station))
+		shutil.copy(music,'%s/%s'%(music_p,station))
 			
 
 def songs(station):
