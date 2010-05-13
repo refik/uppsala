@@ -13,6 +13,7 @@
 <p>
 <form action="/fileshare/addRadioFile" method="post" enctype="multipart/form-data">
 	{{ form }}
+	<input type="hidden" name="type" value="radio"/>
 	<input type="hidden" name="station" value="{{ station_id }}"/>
 	<input type="submit" value="Send" />
 </form>
