@@ -15,7 +15,7 @@ urlpatterns = patterns('',
 	(r'^comments/', include('django.contrib.comments.urls')),
 )
 
- Media Folder (for the development phase. Should be deleted after)
+# Media Folder (for the development phase. Should be deleted after)
 if DEBUG:
 	urlpatterns += patterns('',
 		(r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '%s/media' % PROJECT_PATH}),
