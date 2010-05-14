@@ -31,7 +31,7 @@ def restart(station):
 	f = open('%s/input' %(radio_p),'r')
 	pids = f.readlines()
 	for pid in pids:
-		dead = pid.split()[0]
+		dead = int(pid.split()[0])
 		os.kill(dead,9)
 	stations = stations()
 	for s in stations:
