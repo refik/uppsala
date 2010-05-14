@@ -27,7 +27,7 @@ def songs(station):
 
 
 def restart(station):
-	os.system('ps -aef | grep -e icegenerator -e %s > %s/input' %(station, radio_p))
+	os.system('ps -e | grep icegenerator')
 	f = open('%s/input' %(radio_p),'r')
 	pids = f.readlines()
 	for pid in pids:
