@@ -17,9 +17,12 @@ def add(station,music):
 		os.system('tar -xf %s -C %s/%s' %(music, music_p, station))
 	elif music[-3:] == 'zip':
 		os.system('unzip -jo %s -d %s/%s' %(music, music_p, station))
+	elif music[-3:] == 'bz2':
+		os.system('tar -xvjf %s -C %s/%s' %(music, music_p, station))
 	else:
 		shutil.copy(music,'%s/%s'%(music_p,station))
-			
+
+	
 
 def songs(station):
 	songs = os.listdir('%s/%s' %(music_p, station))
