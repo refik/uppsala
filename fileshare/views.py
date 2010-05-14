@@ -31,6 +31,7 @@ def addFile(request):
 			fname = str(name)
 			place = kullanici.username
 			path = handle_uploaded_file(name,place)
+			ftype = ""
 			if fname[-3:] == "mp3" or fname[-3:] == "ogg":
 				ftype = "Audio"
 			if fname[-3:] == "jpg" or fname[-3:] == "gif" or fname[-3:] == "png":
