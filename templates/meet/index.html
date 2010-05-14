@@ -1,5 +1,5 @@
 {% if meeting_suggestions %}
-<strong>meet</strong>
+<strong>meet<strong>
 <ul>
 	{% for meet in meeting_suggestions %}
 		<li>{{ meet.date }} tarihi icin {{ meet.sender }} bulusma teklif etti. Yer olarak {{ meet.place }}. <a href="/meet/{{ meet.id }}/">oyla</a> <a href="/meet/{{ meet.id }}/result/">durum</a></li>
