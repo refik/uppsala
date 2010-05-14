@@ -33,8 +33,8 @@ def restart(station):
 	for pid in pids:
 		dead = int(pid.split()[0])
 		os.kill(dead,9)
-	stations = stations()
-	for s in stations:
+	s2bkilled = stations()
+	for s in s2bkilled:
 		os.system('icegenerator -f %s/%s'%(radio_p,s))
 
 	
