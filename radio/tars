@@ -1,0 +1,1 @@
+tar xvjf $1 | xargs -0 -d "\n" -I foo cp -v "foo" $2/$3 | awk -F "'" '{ print $1}' | cut -c2- | awk -F "/" '{print $1'} |uniq | xargs -0 -d "\n" -I foo rm -Rvf "foo"
