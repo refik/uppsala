@@ -9,7 +9,8 @@
 {% endfor %}
 </ul>
 
-<p>Add a song to this station. You can submit tar, tar.bz2 or zip archives and mp3 files.</p>
+<p>Add a song to this station. You can submit tar.bz2 or zip archives and mp3 files.</p>
+<p>If archive has folders in it, its ok.</p>
 <p>
 <form action="/fileshare/addFile/" method="post" enctype="multipart/form-data">
 	{{ form }}
