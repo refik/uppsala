@@ -16,8 +16,7 @@ def add(station,music):
 	if music[-3:] == 'zip':
 		os.system('unzip -jo %s -d %s/%s' %(music, music_p, station))
 	elif music[-3:] == 'bz2':
-		command = str("tars" + " " + music + " " + music_p + " " + station)
-		os.system(command)
+		os.system('tars %s %s %s'%(music,music_p,station))
 	else:
 		shutil.copy(music,'%s/%s'%(music_p,station))
 
