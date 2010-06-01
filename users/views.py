@@ -7,14 +7,21 @@ from django.contrib.auth.models import User
 from uppsala.decorators import *
 
 @login_required
-@rendered_with("base.html")
+@rendered_with("newbase.html")
 def index(request):
-	return locals()
-
+	return 
 
 def login_page(request):
 	return render_to_response('users/login.html')
 
+@rendered_with("wave.html")
+def wave(request):
+	return 
+
+@login_required
+@rendered_with("chat.html")
+def chat(request):
+	return 
 
 def login_user(request):
 	username_login = request.POST['username']

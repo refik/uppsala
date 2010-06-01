@@ -1,113 +1,42 @@
-
-body{
+body {
 	background-color: #fff;
 	color: #101010;
 	font-size:0.7em;
 	font-family: Verdana, Helvetica, sans-serif;
+	behavior: url(csshover.htc);
 }
 
 #wrapper{
-	background-color: #fff;
+	background-color: #ddd;
 	border: 0px solid #69D2E7;
-	width:800px;
+	width:550px;
 	margin:auto;
 	display:block;
 	#height:1000px;
 }
 
-#header{
-	text-align: center;
-	font-size: 4.0em;
-	font-family: 'Georgia', serif;
-	color: #000;
-	padding:5px;
+#title { 
+	font-family: 'Droid Sans';
+	float: left;
+	font-size: 16px;
+	color:#FFFF00;
+	margin-left: 5px;
 }
 
-#top_menu{
-	background: #fff;
-	text-align: right;
-	padding: 2px;
-	padding-right: 10px;
-	height:10px;
-	clear:both;
-	padding-bottom:40px;
+#menu {
+   display:table;
+   width: 550px;
+   margin:auto;
+   background-color: rgb(19, 40, 57);
 }
+
 #main_content{
 	clear:both;
 	width:539px;
 	float:left;
 	padding-left: 10px;
 }
-#shoutbox{
-	width:250px;
-	list-style-type: none;
-	padding: 0px;
-	background: #fff;
-	float:left;
-}
-#shoutbox_header{
-	width: 210px;
-	background: #fff;
-	border-bottom: 1px solid #bbb;
-	padding: 0px;
-	padding-left: 40px;
-	min-height: 20px;
-}
 
-.shout{
-	clear:both;
-	background: #fff;
-	width: 250px;
-	display:block;
-	min-height: 40px;
-	list-style-type: none;
-}
-
-#shoutbox .userinfo{
-	width: 40px;
-	min-height:40px;
-	padding: 0;
-	margin: 0;
-	text-align: center;
-	float: left;
-	border-bottom: 1px solid #bbb;
-}
-
-#shoutbox .shout_content{
-	width:200px;
-	float: left;
-	padding-left: 5px;
-	background: #fff;
-	min-height:40px;
-	border-bottom: 1px solid #bbb;
-}
-
-#shoutbox .shout_meta{
-	height:10px;
-	font-size:0.7em;
-	color: #4d4b3f;
-}
-
-#shoutbox #addshout{
-	background: #fff;
-	height: 30px;
-	width: 210px;
-	padding-left: 40px;
-}
-
-#shoutbox .textbox{
-	width: 150px;
-	border: 1px solid;
-}
-#login
-{
-width:20%;
-}
-
-#register
-{
-width:20%;
-}
 
 #footer{
 	clear:both;
@@ -118,6 +47,71 @@ width:20%;
 	height:10px;
 }
 
-.nodisplay{
-	display:none;
+
+div#menu a {
+	color:#000;
+	text-decoration:none;
+}
+
+
+ul#nav {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul#nav li a {
+	display: block;
+	font-weight: bold;
+	padding: 2px 10px;
+	background:#f9f9f9;
+}
+
+ul#nav li a:hover {
+	background:#888;
+	color:#fff;
+}
+	
+ul#nav li {
+	float: left;
+	position: relative;
+	width: 100px;
+	text-align: center;
+	margin-right:5px;
+	border:1px solid #ccc;
+
+}
+
+ul#nav li.current a {
+	background:#ddd;
+}
+
+ul#nav li.current a:hover {
+	background:#888;
+}
+
+li ul {
+	display: none;
+	position: absolute;	
+	width:100px;
+	top: 0;
+	left: 0; 
+}
+
+ul#nav li ul.sub li{
+	border-width:0 1px 1px 1px!important;
+	list-style:none;
+	text-align:left;
+}
+
+ul#nav li ul.sub li a{
+	font-weight: normal!important;	
+}
+li>ul {
+	top: auto;
+	left: -40px;
+}
+
+li:hover ul, li.over ul {
+	display: block;
 }
