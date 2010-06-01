@@ -1,0 +1,25 @@
+{% extends "newbase.html" %}
+
+{% block head_s %}
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+	google.load("wave", "1");
+	function initialize() {
+		var waveFrame = document.getElementById("waveframe");
+		var embedOptions = {
+			target: waveFrame
+		}
+		var wavePanel = new google.wave.WavePanel(embedOptions);
+		wavePanel.loadWave("googlewave.com!w+JXyE35sSA")
+	}
+	google.setOnLoadCallback(initialize);
+</script>
+{% endblock %}
+
+{% block main_content %}
+<script type="text/javascript">
+	currentPage("wave");
+</script>
+<div id="waveframe" style="margin:auto; width: 500px; height: 100%"></div>
+{% endblock %}

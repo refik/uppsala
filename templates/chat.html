@@ -1,0 +1,22 @@
+{% extends "newbase.html" %}
+
+{% block head_s %}
+<link rel="stylesheet" href="/site_media/css/chat.css" type="text/css" media="screen" />
+<script type="text/javascript" src="/site_media/javascript/chat.js"></script>
+{% endblock %}
+
+{% block main_content %}
+<script type="text/javascript">
+	currentPage("chat");
+</script>
+
+<div id="content">
+	<form>
+	<input type="hidden" size="13" name="resource" value="do">&nbsp;
+	<input type="hidden" size="13" name="username" value="{{ user }}">
+	<p></p>
+	<div id="board"></div>
+	<textarea rows=5 stlye="border:none" class="messageb"  onkeypress="return entsub(event,this.form)" name="message"></textarea>
+	</form>
+</div> 	
+{% endblock %}
